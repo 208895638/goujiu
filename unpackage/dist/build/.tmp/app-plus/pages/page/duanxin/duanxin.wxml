@@ -1,0 +1,2 @@
+<import src="./duanxin.vue.wxml" />
+    <template is="ccdab06e" data="{{ ...$root['0'], $root }}"/>

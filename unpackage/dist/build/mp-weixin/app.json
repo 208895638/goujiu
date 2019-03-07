@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/router/index/index",
+    "pages/router/sort/sort",
+    "pages/router/welfare/welfare",
+    "pages/router/car/car",
+    "pages/router/mine/mine",
+    "pages/block/block",
+    "pages/page/login/login",
+    "pages/page/info/info",
+    "pages/page/forgetPassword/forgetPassword",
+    "pages/page/setPassword/setPassword",
+    "pages/page/duanxin/duanxin",
+    "pages/page/register/register"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {},
+  "tabBar": {
+    "borderStyle": "#ccc",
+    "backgroundColor": "#fff",
+    "color": "#666",
+    "selectedColor": "#cd0011",
+    "list": [
+      {
+        "pagePath": "pages/router/index/index",
+        "iconPath": "static/img/tabbar/home.png",
+        "selectedIconPath": "static/img/tabbar/homeactive.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/router/sort/sort",
+        "iconPath": "static/img/tabbar/guanzhu.png",
+        "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/router/welfare/welfare",
+        "iconPath": "static/img/tabbar/add.png",
+        "selectedIconPath": "static/img/tabbar/addactive.png",
+        "text": "专享福利"
+      },
+      {
+        "pagePath": "pages/router/car/car",
+        "iconPath": "static/img/tabbar/news.png",
+        "selectedIconPath": "static/img/tabbar/newsactive.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/router/mine/mine",
+        "iconPath": "static/img/tabbar/me.png",
+        "selectedIconPath": "static/img/tabbar/meactive.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

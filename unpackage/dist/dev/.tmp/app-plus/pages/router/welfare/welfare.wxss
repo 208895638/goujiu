@@ -1,0 +1,6 @@
+
+.block{
+	height: var(--status-bar-height);
+	width: 750rpx;
+}
+

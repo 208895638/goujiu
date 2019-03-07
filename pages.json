@@ -1,0 +1,134 @@
+{
+    "pages" : [
+        {
+            "path" : "pages/router/index/index",
+            "style" : {
+                "navigationBarTitleText" : "首页",
+                "app-plus" : {
+                    "titleNView" : false
+                }
+            }
+        },
+        {
+            "path" : "pages/router/sort/sort",
+            "style" : {
+                "navigationBarTitleText" : "分类页",
+                "app-plus" : {
+                    "titleNView" : false
+                }
+            }
+        },
+        {
+            "path" : "pages/router/welfare/welfare",
+            "style" : {
+                "navigationBarTitleText" : "福利页",
+                "app-plus" : {
+                    "titleNView" : false
+                }
+            }
+        },
+        {
+            "path" : "pages/router/car/car",
+            "style" : {
+                "navigationBarTitleText" : "购物车",
+                "app-plus" : {
+                    "titleNView" : false
+                }
+            }
+        },
+        {
+            "path" : "pages/router/mine/mine",
+            "style" : {
+                "navigationBarTitleText" : "我的页面",
+                "app-plus" : {
+                    "titleNView" : false
+                }
+            }
+        },
+        {
+            "path" : "pages/block/block",
+            "style" : {}
+        },
+        {
+            "path" : "pages/page/login/login",
+            "style" : {
+                "navigationBarTitleText" : "账号登陆"
+            }
+        },
+        {
+            "path" : "pages/page/info/info",
+            "style" : {
+                "navigationBarTitleText" : "info页"
+            }
+        },
+        {
+            "path" : "pages/page/forgetPassword/forgetPassword",
+            "style" : {
+                "navigationBarTitleText" : "忘记密码"
+            }
+        },
+        {
+            "path" : "pages/page/setPassword/setPassword",
+            "style" : {
+                "navigationBarTitleText" : "设置密码"
+            }
+        },
+        {
+            "path" : "pages/page/duanxin/duanxin",
+            "style" : {
+                "navigationBarTitleText" : "手机快捷登陆"
+            }
+        },
+        {
+            "path" : "pages/page/register/register",
+            "style" : {
+                "navigationBarTitleText" : "注册"
+            }
+        }
+    ],
+    "globalStyle" : {
+        "navigationBarTextStyle" : "black",
+        "navigationBarTitleText" : "uni-app",
+        "navigationBarBackgroundColor" : "#F8F8F8",
+        "backgroundColor" : "#F8F8F8"
+    },
+    // "navigationStyle" : "custom"
+    "tabBar" : {
+        "borderStyle" : "#ccc",
+        "backgroundColor" : "#fff",
+        "color" : "#666",
+        "selectedColor" : "#cd0011",
+        "list" : [
+            {
+                "pagePath" : "pages/router/index/index",
+                "iconPath" : "static/img/tabbar/home.png",
+                "selectedIconPath" : "static/img/tabbar/homeactive.png",
+                "text" : "首页"
+            },
+            {
+                "pagePath" : "pages/router/sort/sort",
+                "iconPath" : "static/img/tabbar/guanzhu.png",
+                "selectedIconPath" : "static/img/tabbar/guanzhuactive.png",
+                "text" : "分类"
+            },
+            {
+                "pagePath" : "pages/router/welfare/welfare",
+                "iconPath" : "static/img/tabbar/add.png",
+                "selectedIconPath" : "static/img/tabbar/addactive.png",
+                "text" : "专享福利"
+            },
+            {
+                "pagePath" : "pages/router/car/car",
+                "iconPath" : "static/img/tabbar/news.png",
+                "selectedIconPath" : "static/img/tabbar/newsactive.png",
+                "text" : "购物车"
+            },
+            {
+                "pagePath" : "pages/router/mine/mine",
+                "iconPath" : "static/img/tabbar/me.png",
+                "selectedIconPath" : "static/img/tabbar/meactive.png",
+                "text" : "我的"
+            }
+        ]
+    }
+}

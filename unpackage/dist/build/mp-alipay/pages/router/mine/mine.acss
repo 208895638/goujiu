@@ -1,0 +1,10 @@
+
+.block{
+	height: 25px;
+	width: 750rpx;
+}
+.btn1{
+	background-color: red;
+	height: 100rpx;
+}
+

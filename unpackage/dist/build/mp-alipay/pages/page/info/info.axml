@@ -1,0 +1,2 @@
+<import src="/components/header.vue.axml"/><template name="3c94e609"><view class="_view {{ h[ 0 ].rcl }}"><view class="_div block"></view><view class="_div  bb"><template is="7d412397" data="{{ ...$root[ cp + 0 ], $root, _t: _t || '' }}" /><view class="_div mask"></view></view></view></template>
+<template is="3c94e609" data="{{ ...$root['0'], $root }}"/>

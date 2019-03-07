@@ -1,0 +1,2 @@
+<import src="./welfare.vue.wxml" />
+    <template is="9c4c8d46" data="{{ ...$root['0'], $root }}"/>

@@ -1,0 +1,2 @@
+<template name="cf371c7a"><view class="_div {{ h[ 0 ].rcl }}"><view class="_div block"></view><text class="_text">我是分类页</text></view></template>
+<template is="cf371c7a" data="{{ ...$root['0'], $root }}"/>

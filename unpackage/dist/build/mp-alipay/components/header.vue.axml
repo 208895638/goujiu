@@ -1,0 +1,1 @@
+<import src="/static/icon/uni-icon.vue.axml"/><template name="7d412397"><view class="_view {{ h[ 0 ].rcl }}"><view class="_div top"><view class="_div image" data-cid="{{ _c || c }}" data-hid="{{ 2 }}" onTap="_pe"><template is="e3ebe6cc" data="{{ ...$root[ cp + 0 ], $root, _t: _t || '' }}" /></view><text class="_text title">{{ h[ 1006 ].t }}</text></view></view></template>

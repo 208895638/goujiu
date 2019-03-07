@@ -1,0 +1,2 @@
+<template name="89a48aae"><view class="_div {{ h[ 0 ].rcl }}"><view class="_div block"></view><text class="_text">我是首页</text></view></template>
+<template is="89a48aae" data="{{ ...$root['0'], $root }}"/>
