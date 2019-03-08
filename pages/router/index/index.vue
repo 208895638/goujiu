@@ -54,13 +54,8 @@
 					{{ second }}
 				</em>
 			</h2>
-			<swiper class="swiper wins" 
-			autoplay=true 
-			interval=20000 
-			next-margin="100upx"
-			circular=true 
-			display-multiple-items="1" 
-			duration="500">
+			<swiper class="swiper wins" autoplay=true interval=20000 next-margin="100upx" circular=true display-multiple-items="1"
+			 duration="500">
 				<swiper-item v-for="(item , index) in skillList" :key="index">
 					<view class="swiper-item  tuijiansp">
 						<img :src="'http://img0.gjw.com/product/'+item.imgUrl" alt="">
@@ -84,31 +79,194 @@
 		<view class="sp">
 			<view class="spT">
 				<span v-for="(item , index ) in id[4]" :key="item.Pic">
-					<image :src="item.Pic" mode="widthFix" ></image>
+					<image :src="item.Pic" mode="widthFix"></image>
 				</span>
 				<span v-for="(item , index ) in id[5]" :key="item.Pic">
-					<image :src="item.Pic" mode="widthFix" ></image>
+					<image :src="item.Pic" mode="widthFix"></image>
 				</span>
 			</view>
 			<view class="spB">
 				<span v-for="(item , index ) in id[101]" :key="item.Pic" class="l">
-					<image :src="item.Pic" mode="widthFix" ></image>
+					<image :src="item.Pic" mode="widthFix"></image>
 				</span>
 				<span v-for="(item , index ) in id[102]" :key="item.Pic" class="r">
-					<image :src="item.Pic" mode="widthFix" ></image>
+					<image :src="item.Pic" mode="widthFix"></image>
 				</span>
 				<span v-for="(item , index ) in id[103]" :key="item.Pic" class="r">
-					<image :src="item.Pic" mode="widthFix" ></image>
+					<image :src="item.Pic" mode="widthFix"></image>
 				</span>
+			</view>
+			<view class="spBB" v-for="(item , index ) in id[104]" :key="item.Pic">
+				<image :src="item.Pic" mode="widthFix"></image>
+			</view>
+			<view class="spBB" v-for="(item , index ) in id[105]" :key="item.Pic">
+				<image :src="item.Pic" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="restWins">
+			<view class="top">
+				<scroll-view id="tab-bar" class="uni-swiper-tab" scroll-x :scroll-left="scrollLeft">
+					<view v-for="(tab,index) in tabBars" :key="tab.id" :class="['swiper-tab-list',tabIndex==index ? 'active' : '']"
+					 :id="tab.id" :data-current="index" @click="tapTab(index)">{{tab.name}}</view>
+				</scroll-view>
+			</view>
+			<view class="bot ">
+				<template v-if="tabIndex == 0">
+					<view class="list-view">
+						<view class="list-item winList" v-for="(item,index) in id[6]" :key="index" >
+							<image :src="item.Pic" mode="widthFix"></image>
+							<text class="wT">
+								{{ item.Name }}
+							</text>
+							<text v-for="(ele , ins) in item.listAtivityName" :key="ins">
+								<uni-badge :text="ele.Ativityname" :type="ele.Ativityname=='限时抢购' ?'warning':'primary'"></uni-badge>
+							</text>
+							<text class="wB">
+								￥{{ item.ExtField }}
+							</text>
+						</view>
+					</view>
+					<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
+				</template>
+				<template v-if="tabIndex == 1">
+					<view class="list-view">
+						<view class="list-item winList" v-for="(item,index) in id[7]" :key="index" >
+							<image :src="item.Pic" mode="widthFix"></image>
+							<text class="wT">
+								{{ item.Name }}
+							</text>
+							<text v-for="(ele , ins) in item.listAtivityName" :key="ins">
+								<uni-badge :text="ele.Ativityname" :type="ele.Ativityname=='限时抢购' ?'warning':'primary'"></uni-badge>
+							</text>
+							<text class="wB">
+								￥{{ item.ExtField }}
+							</text>
+						</view>
+					</view>
+					<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
+				</template>
+				<template v-if="tabIndex == 2">
+					<view class="list-view">
+						<view class="list-item winList" v-for="(item,index) in id[8]" :key="index" >
+							<image :src="item.Pic" mode="widthFix"></image>
+							<text class="wT">
+								{{ item.Name }}
+							</text>
+							<text v-for="(ele , ins) in item.listAtivityName" :key="ins">
+								<uni-badge :text="ele.Ativityname" :type="ele.Ativityname=='限时抢购' ?'warning':'primary'"></uni-badge>
+							</text>
+							<text class="wB">
+								￥{{ item.ExtField }}
+							</text>
+						</view>
+					</view>
+					<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
+				</template>
+				<template v-if="tabIndex == 3">
+					<view class="list-view">
+						<view class="list-item winList" v-for="(item,index) in id[9]" :key="index" >
+							<image :src="item.Pic" mode="widthFix"></image>
+							<text class="wT">
+								{{ item.Name }}
+							</text>
+							<text v-for="(ele , ins) in item.listAtivityName" :key="ins">
+								<uni-badge :text="ele.Ativityname" :type="ele.Ativityname=='限时抢购' ?'warning':'primary'"></uni-badge>
+							</text>
+							<text class="wB">
+								￥{{ item.ExtField }}
+							</text>
+						</view>
+					</view>
+					<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
+				</template>
+				<template v-if="tabIndex == 4">
+					<view class="list-view">
+						<view class="list-item winList" v-for="(item,index) in id[10]" :key="index" >
+							<image :src="item.Pic" mode="widthFix"></image>
+							<text class="wT">
+								{{ item.Name }}
+							</text>
+							<text v-for="(ele , ins) in item.listAtivityName" :key="ins">
+								<uni-badge :text="ele.Ativityname" :type="ele.Ativityname=='限时抢购' ?'warning':'primary'"></uni-badge>
+							</text>
+							<text class="wB">
+								￥{{ item.ExtField }}
+							</text>
+						</view>
+					</view>
+					<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
+				</template>
+				<template v-if="tabIndex == 5">
+					<view class="list-view">
+						<view class="list-item winList" v-for="(item,index) in id[11]" :key="index" >
+							<image :src="item.Pic" mode="widthFix"></image>
+							<text class="wT">
+								{{ item.Name }}
+							</text>
+							<text v-for="(ele , ins) in item.listAtivityName" :key="ins">
+								<uni-badge :text="ele.Ativityname" :type="ele.Ativityname=='限时抢购' ?'warning':'primary'"></uni-badge>
+							</text>
+							<text class="wB">
+								￥{{ item.ExtField }}
+							</text>
+						</view>
+					</view>
+					<uni-load-more :loadingType="loadingType" :contentText="contentText"></uni-load-more>
+				</template>
+				
 			</view>
 		</view>
 	</div>
 </template>
 
 <script>
+	import uniLoadMore from '../../../components/uni-load-more.vue';
+	import uniBadge from "../../../components/uni-badge.vue";
 	export default {
+		components: {
+			uniLoadMore,
+			uniBadge
+		},
 		data() {
 			return {
+				scrollLeft: 0,
+				tabIndex: 0,
+				loadingType: 0,
+				contentText: {
+					contentdown: "上拉显示更多",
+					contentrefresh: "正在加载...",
+					contentnomore: "没有更多数据了"
+				},
+				tabBars: [{
+					name: '精选',
+					id: 'jingxuan',
+					sid: 0
+				}, 
+				{
+					name: '白酒',
+					id: 'baijiu',
+					sid: 1
+				}, 
+				{
+					name: '葡萄酒',
+					id: 'putaojiu',
+					sid: 2
+				}, 
+				{
+					name: '清酒洋酒',
+					id: 'qingyang',
+					sid: "4,1435"
+				}, 
+				{
+					name: '黄酒啤酒',
+					id: 'huangpi',
+					sid: "5,6"
+				}, 
+				{
+					name: '年份老酒',
+					id: 'laojiu',
+					sid: 7
+				}],
 				hour: "0",
 				minute: "0",
 				second: "0",
@@ -148,8 +306,50 @@
 				}
 			}
 		},
+		onReachBottom() {
+			if (this.loadingType !== 0) {
+				return;
+			}
+// 			this.loadingType = 1;
+// 			let list = [],
+// 				maxItem = this.tabBars[this.tabBars.length - 1],
+// 				length = maxItem + 6;
+// 			for (let i = maxItem + 1; i < length; i++) {
+// 				list.push(i);
+// 			}
+// 			setTimeout(() => {
+// 				if (length > 26) {
+// 					this.loadingType = 2;
+// 					return;
+// 				}
+// 				this.tabBars = this.tabBars.concat(list);
+// 				this.loadingType = 0;
+// 			}, 800);
+		},
 		methods: {
-
+			
+			async tapTab(index) { //点击tab-bar
+				if (this.tabIndex === index) {
+					alert(index)
+					return false;
+				} else {
+					let tabBar = await this.getElSize("tab-bar"),
+						tabBarScrollLeft = tabBar.scrollLeft; //点击的时候记录并设置scrollLeft
+					this.scrollLeft = tabBarScrollLeft;
+					this.isClickChange = true;
+					this.tabIndex = index;
+				}
+			},
+			getElSize(id) { //得到元素的size
+				return new Promise((res, rej) => {
+					uni.createSelectorQuery().select('#' + id).fields({
+						size: true,
+						scrollOffset: true
+					}, (data) => {
+						res(data);
+					}).exec();
+				});
+			},
 			init() {
 				const _this = this;
 				uni.request({
@@ -232,7 +432,7 @@
 				});
 			},
 			aaa() {
-				console.log(this.id[101]);
+				console.log(this.id[6]);
 			},
 		},
 		mounted() {
@@ -251,6 +451,7 @@
 	.top {
 		position: relative;
 		height: 350upx;
+
 		.search {
 			width: 80%;
 			margin: 12upx auto;
@@ -268,10 +469,12 @@
 			margin: auto;
 			z-index: 99;
 		}
-		.ban{
+
+		.ban {
 			height: 360upx;
 			width: 750upx;
-			image{
+
+			image {
 				width: 750upx;
 				//height: 360upx;
 			}
@@ -336,12 +539,14 @@
 			border-bottom-width: 1upx;
 			display: flex;
 			align-items: center;
+
 			//justify-content: center;
 			span {
 				color: #333;
 				font-weight: bold;
 				margin-right: 10upx;
 			}
+
 			em {
 				font-style: normal;
 				color: #fff;
@@ -351,37 +556,45 @@
 				margin: 0 10upx;
 			}
 		}
-		.wins{
+
+		.wins {
 			height: 260upx;
-			.tuijiansp{
+
+			.tuijiansp {
 				display: flex;
 				padding: 30upx;
 				font-size: 0.9em;
-				img{
+
+				img {
 					width: 200upx;
 					height: 200upx;
 					border-radius: 20upx;
 					margin-right: 20upx;
 				}
-				dl{
+
+				dl {
 					height: 100%;
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					dt{
+
+					dt {
 						font-weight: bold;
 						border-bottom-style: solid;
 						border-bottom-color: #F4F4F4;
 						border-bottom-width: 1upx;
 					}
-					dd{
+
+					dd {
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
-						span{
+
+						span {
 							color: #f44;
 						}
-						.search{
+
+						.search {
 							padding: 8upx;
 							background-color: #5EAFFE;
 							color: #fff;
@@ -392,34 +605,89 @@
 			}
 		}
 	}
-	.sp{
-		.spT{
+
+	.sp {
+		.spT {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			width: 100%;
 			height: 300upx;
-			image{
+
+			image {
 				width: 375upx;
 			}
 		}
-		.spB{
-			padding:  30upx;
+
+		.spB {
+			padding: 30upx;
 			display: flex;
 			align-items: center;
-			.l{
+
+			.l {
 				width: 50%;
 				height: 100%;
-				image{
+
+				image {
 					width: 300upx;
 					//height: 150upx;
 				}
 			}
-			.r{
+
+			.r {
 				//width: 50%;
 				height: 100%;
-				image{
+
+				image {
 					width: 150upx;
+				}
+			}
+		}
+
+		.spBB {
+			padding: 0 30upx;
+			display: flex;
+			align-items: center;
+
+			image {
+				width: 100%;
+			}
+		}
+	}
+
+	.restWins {
+		.top {
+			height: auto;
+			.active {
+				color: #f44;
+			}
+		}
+		.bot{
+			.list-view{
+				display: flex;
+				//flex-direction: column;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				align-items: center;
+				padding: 20upx 10upx;
+			}
+			.winList{
+				width: 46%;
+				padding: 0 10upx;
+				border: 1upx solid #eee;
+				min-height: 600upx;
+				margin-bottom: 20upx;
+				display: flex;
+				flex-direction: column;
+				image{
+					width: 100%;
+				}
+				.wT{
+					color: #666;
+					font-size: 0.9em;
+				}
+				.wB{
+					color: #fb223e;
 				}
 			}
 		}
