@@ -1,2 +1,0 @@
-<import src="./opac.vue.wxml" />
-    <template is="68fb4b29" data="{{ ...$root['0'], $root }}"/>

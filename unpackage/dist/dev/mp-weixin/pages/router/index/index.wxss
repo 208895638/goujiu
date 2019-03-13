@@ -140,6 +140,81 @@
 }
 }
 
+
+.uni-badge,
+.uni-badge-default {
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	font-size: 12px;
+	line-height: 1;
+	display: inline-block;
+	padding: 3px 6px;
+	color: #333;
+	border-radius: 100px;
+}
+.uni-badge.uni-badge-size-small,
+.uni-badge-default.uni-badge-size-small {
+	height: 10px;
+	line-height: 11px;
+	padding: 0px 3px;
+	font-size: 8px !important;
+}
+.uni-badge.uni-badge-inverted {
+	padding: 0 5px 0 0;
+	color: #929292;
+	background-color: transparent
+}
+.uni-badge-primary {
+	color: #fff;
+	background-color: #007aff
+}
+.uni-badge-blue.uni-badge-inverted,
+.uni-badge-primary.uni-badge-inverted {
+	color: #007aff;
+	background-color: transparent
+}
+.uni-badge-green,
+.uni-badge-success {
+	color: #fff;
+	background-color: #4cd964;
+}
+.uni-badge-green.uni-badge-inverted,
+.uni-badge-success.uni-badge-inverted {
+	color: #4cd964;
+	background-color: transparent
+}
+.uni-badge-warning,
+.uni-badge-yellow {
+	color: #fff;
+	background-color: #f0ad4e
+}
+.uni-badge-warning.uni-badge-inverted,
+.uni-badge-yellow.uni-badge-inverted {
+	color: #f0ad4e;
+	background-color: transparent
+}
+.uni-badge-danger,
+.uni-badge-red {
+	color: #fff;
+	background-color: #dd524d
+}
+.uni-badge-danger.uni-badge-inverted,
+.uni-badge-red.uni-badge-inverted {
+	color: #dd524d;
+	background-color: transparent
+}
+.uni-badge-purple,
+.uni-badge-royal {
+	color: #fff;
+	background-color: #8a6de9
+}
+.uni-badge-purple.uni-badge-inverted,
+.uni-badge-royal.uni-badge-inverted {
+	color: #8a6de9;
+	background-color: transparent
+}
+
 @charset "UTF-8";
 /**
  * 这里是uni-app内置的常用样式变量
@@ -410,16 +485,11 @@
 .restWins .top .active.data-v-eb85afa0 {
     color: #f44;
 }
-.restWins .bot.data-v-eb85afa0 {
+.restWins .bot .list-view.data-v-eb85afa0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
@@ -431,8 +501,32 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 20rpx 10rpx;
 }
 .restWins .bot .winList.data-v-eb85afa0 {
-    width: 49%;
+  width: 46%;
+  padding: 0 10rpx;
+  border: 1rpx solid #eee;
+  min-height: 600rpx;
+  margin-bottom: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.restWins .bot .winList image.data-v-eb85afa0 {
+    width: 100%;
+}
+.restWins .bot .winList .wT.data-v-eb85afa0 {
+    color: #666;
+    font-size: 0.9em;
+}
+.restWins .bot .winList .wB.data-v-eb85afa0 {
+    color: #fb223e;
 }
 

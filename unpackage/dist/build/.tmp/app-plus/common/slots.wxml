@@ -1,2 +1,4 @@
 <import src="/static/icon/uni-icon.vue.wxml" />
+<import src="/components/uni-badge.vue.wxml" />
+<import src="/components/uni-load-more.vue.wxml" />
 

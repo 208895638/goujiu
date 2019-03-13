@@ -1,0 +1,1 @@
+<template name="76d7ab3c"><text class="_text 76d7ab3c uni-badge {{setClass}}" wx:if="{{text}}" bindtap="handleProxy" data-eventid="{{'76d7ab3c-0'}}" data-comkey="{{$k}}">{{text}}</text></template>
