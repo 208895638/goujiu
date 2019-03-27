@@ -18,14 +18,14 @@
 			 :duration="duration">
 				<swiper-item v-for="(item , index) in id[1]" :key="index">
 					<view class="swiper-item ">
-						<image :src="item.Pic" mode="widthFix"></image>
+						<image :src="item.Pic"></image>
 					</view>
 				</swiper-item>
 			</swiper>
 		</view>
 		<view class="deliverGoods">
 			<h2>
-				<img src="../../../static/mine/hot.png" mode="widthFix" alt="">
+				<img src="../../../static/mine/hot.png"  alt="">
 			</h2>
 			<swiper class="swiper deliver" :autoplay="autoplay" interval=3000 circular=true vertical=true :duration="duration">
 				<swiper-item v-for="(item , index) in id[2]" :key="index">
@@ -36,7 +36,7 @@
 			</swiper>
 			<ul class="wins">
 				<li v-for="(item , index) in id[3]" :key="index">
-					<img :src="item.Pic" alt="" mode="widthFix">
+					<img :src="item.Pic" alt="">
 				</li>
 			</ul>
 		</view>
@@ -110,11 +110,11 @@
 					 :id="tab.id" :data-current="index" @click="tapTab(index)">{{tab.name}}</view>
 				</scroll-view>
 			</view>
-			<view class="bot ">
+			<view class="bot">
 				<view class="botPer" :class="tabIndex == 0 ? 'on' : ''">
 					<view class="list-view">
 						<view class="list-item winList" v-for="(item,index) in id[6]" :key="index" >
-							<image :src="item.Pic" mode="widthFix"></image>
+							<image :src="item.Pic" lazy-load="true" mode="widthFix"></image>
 							<text class="wT">
 								{{ item.Name }}
 							</text>
@@ -518,7 +518,7 @@
 
 			image {
 				width: 750upx;
-				//height: 360upx;
+				height: 360upx;
 			}
 		}
 	}
@@ -535,7 +535,7 @@
 
 			img {
 				width: 200upx;
-				height: auto;
+				height: 37.61upx;
 			}
 		}
 
@@ -552,10 +552,12 @@
 
 			li {
 				list-style: none;
-				width: 20%;
+				width: 138upx;
 
 				img {
 					width: 100%;
+					height: 138upx;
+					transition: .1s ease-in;
 				}
 			}
 		}
@@ -658,6 +660,7 @@
 
 			image {
 				width: 375upx;
+				height: 308upx;
 			}
 		}
 
@@ -672,7 +675,7 @@
 
 				image {
 					width: 300upx;
-					//height: 150upx;
+				    height: 193.333upx;
 				}
 			}
 
@@ -682,6 +685,7 @@
 
 				image {
 					width: 150upx;
+					height: 195.72upx;
 				}
 			}
 		}
@@ -730,6 +734,8 @@
 				flex-direction: column;
 				image{
 					width: 100%;
+					height: 335.8upx;
+					will-change: transform;
 				}
 				.wT{
 					color: #666;

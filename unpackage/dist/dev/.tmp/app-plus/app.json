@@ -59,6 +59,7 @@
       }
     ]
   },
+  "debug": true,
   "splashscreen": {
     "alwaysShowBeforeRender": true,
     "autoclose": false

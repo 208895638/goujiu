@@ -7,8 +7,8 @@
   "id": "__UNI__B0CAAC6",
   "name": "gjw",
   "version": {
-    "name": "1.0.0",
-    "code": "100"
+    "name": "1.0.2",
+    "code": 102
   },
   "description": "",
   "launch_path": "__uniappservice.html",
@@ -21,7 +21,11 @@
     "Share": {
       "description": "分享"
     },
-    "OAuth": {}
+    "OAuth": {},
+    "Contacts": {},
+    "Maps": {
+      "coordType": "gcj02"
+    }
   },
   "plus": {
     "useragent": {
@@ -101,6 +105,9 @@
       "bottom": {
         "offset": "auto"
       }
+    },
+    "uni-app": {
+      "compilerVersion": "1.7.0"
     }
   }
 }

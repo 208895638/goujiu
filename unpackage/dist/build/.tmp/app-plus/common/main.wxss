@@ -1648,7 +1648,12 @@ radio-group ._label, checkbox-group ._label{
             transform: translateY(50%);
 }
 
-/*每个页面公共css */ 
+/*每个页面公共css */
+
+
+image{
+	will-change: transform;
+}
 
 
 @font-face {

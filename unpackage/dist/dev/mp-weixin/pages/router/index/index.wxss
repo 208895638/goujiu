@@ -278,6 +278,7 @@
 }
 .top .ban image.data-v-eb85afa0 {
       width: 750rpx;
+      height: 360rpx;
 }
 .deliverGoods.data-v-eb85afa0 {
   padding: 30rpx;
@@ -291,7 +292,7 @@
 }
 .deliverGoods ._h2 ._img.data-v-eb85afa0 {
       width: 200rpx;
-      height: auto;
+      height: 37.61rpx;
 }
 .deliverGoods .deliver.data-v-eb85afa0 {
     height: 60rpx;
@@ -316,10 +317,14 @@
 }
 .deliverGoods .wins ._li.data-v-eb85afa0 {
       list-style: none;
-      width: 20%;
+      width: 138rpx;
 }
 .deliverGoods .wins ._li ._img.data-v-eb85afa0 {
         width: 100%;
+        height: 138rpx;
+        -webkit-transition: .1s ease-in;
+        -o-transition: .1s ease-in;
+        transition: .1s ease-in;
 }
 .skiller ._h2.data-v-eb85afa0 {
   font-weight: normal;
@@ -440,6 +445,7 @@
 }
 .sp .spT image.data-v-eb85afa0 {
     width: 375rpx;
+    height: 308rpx;
 }
 .sp .spB.data-v-eb85afa0 {
   padding: 30rpx;
@@ -458,12 +464,14 @@
 }
 .sp .spB .l image.data-v-eb85afa0 {
       width: 300rpx;
+      height: 193.333rpx;
 }
 .sp .spB .r.data-v-eb85afa0 {
     height: 100%;
 }
 .sp .spB .r image.data-v-eb85afa0 {
       width: 150rpx;
+      height: 195.72rpx;
 }
 .sp .spBB.data-v-eb85afa0 {
   padding: 0 30rpx;
@@ -484,6 +492,14 @@
 }
 .restWins .top .active.data-v-eb85afa0 {
     color: #f44;
+}
+.restWins .bot .botPer.data-v-eb85afa0 {
+  display: none;
+}
+.restWins .bot .on.data-v-eb85afa0 {
+  display: block;
+  -webkit-animation: fadeIn-data-v-eb85afa0 .3s;
+          animation: fadeIn-data-v-eb85afa0 .3s;
 }
 .restWins .bot .list-view.data-v-eb85afa0 {
   display: -webkit-box;
@@ -521,6 +537,8 @@
 }
 .restWins .bot .winList image.data-v-eb85afa0 {
     width: 100%;
+    height: 335.8rpx;
+    will-change: transform;
 }
 .restWins .bot .winList .wT.data-v-eb85afa0 {
     color: #666;
@@ -528,5 +546,21 @@
 }
 .restWins .bot .winList .wB.data-v-eb85afa0 {
     color: #fb223e;
+}
+@-webkit-keyframes fadeIn-data-v-eb85afa0 {
+0% {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}
+@keyframes fadeIn-data-v-eb85afa0 {
+0% {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
 }
 

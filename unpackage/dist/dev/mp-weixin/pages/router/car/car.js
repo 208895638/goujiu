@@ -113,7 +113,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 
 
@@ -127,7 +127,40 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-{};exports.default = _default;
+
+
+
+
+
+
+{
+  data: function data() {
+    return {
+      longitude: "",
+      latitude: "" };
+
+
+  },
+  mounted: function mounted() {
+    var _this = this;
+    uni.getLocation({
+      type: 'gcj02', //返回可以用于uni.openLocation的经纬度
+      success: function success(res) {
+        _this.longitude = res.longitude;
+        _this.latitude = res.latitude;
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        uni.openLocation({
+          latitude: latitude,
+          longitude: longitude,
+          success: function success() {
+            console.log('success');
+          } });
+
+      } });
+
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 
@@ -157,16 +190,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("text", [_vm._v("当前所处位置:")]),
+    _c("text", [_vm._v("精度：" + _vm._s(_vm.longitude))]),
+    _c("text", [_vm._v("纬度：" + _vm._s(_vm.latitude))])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("text", [_vm._v("我是购物车")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

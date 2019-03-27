@@ -218,16 +218,19 @@ function upx2px (number, newDeviceWidth) {
   if (number === 0) {
     return 0
   }
-  number = (number / BASE_DEVICE_WIDTH) * (newDeviceWidth || deviceWidth);
-  number = Math.floor(number + EPS);
-  if (number === 0) {
+  let result = (number / BASE_DEVICE_WIDTH) * (newDeviceWidth || deviceWidth);
+  if (result < 0) {
+    result = -result;
+  }
+  result = Math.floor(result + EPS);
+  if (result === 0) {
     if (deviceDPR === 1 || !isIOS) {
       return 1
     } else {
       return 0.5
     }
   }
-  return number
+  return number < 0 ? -result : result
 }
 
 var protocols = {};
@@ -444,6 +447,9 @@ function callHook$1(vm, hook, params) {
   if (hook === 'onError' && handlers) {
     handlers = [handlers];
   }
+  if(typeof handlers === 'function'){
+    handlers = [handlers]
+  }
 
   var ret;
   if (handlers) {
@@ -488,6 +494,7 @@ function getRootVueVm(page) {
       // 挂载Vue对象到page上
       this.$vm = app;
       var rootVueVM = app.$root;
+      rootVueVM.__wxExparserNodeId__ = this.__wxExparserNodeId__//fixed by xxxxxx(createIntersectionObserver)
       rootVueVM.__wxWebviewId__ = this.__wxWebviewId__//fixed by xxxxxx(createIntersectionObserver)
       
       //初始化mp对象
@@ -579,6 +586,18 @@ function getRootVueVm(page) {
     onNavigationBarButtonTap: function onNavigationBarButtonTap(options) {
         var rootVueVM = getRootVueVm(this);
     		callHook$1(rootVueVM, "onNavigationBarButtonTap", options)
+    },
+    onNavigationBarSearchInputChanged: function onNavigationBarSearchInputChanged(options) {
+        var rootVueVM = getRootVueVm(this);
+    		callHook$1(rootVueVM, "onNavigationBarSearchInputChanged", options)
+    },
+    onNavigationBarSearchInputConfirmed: function onNavigationBarSearchInputConfirmed(options) {
+        var rootVueVM = getRootVueVm(this);
+    		callHook$1(rootVueVM, "onNavigationBarSearchInputConfirmed", options)
+    },
+    onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked(options) {
+        var rootVueVM = getRootVueVm(this);
+    		callHook$1(rootVueVM, "onNavigationBarSearchInputClicked", options)
     },
     onBackPress: function onBackPress(options) {
         var rootVueVM = getRootVueVm(this);
@@ -5648,6 +5667,8 @@ try {
             if (mpType === "app") {
                 callHook$1(this, "onLaunch", mp.appOptions)
             } else {
+                this.__wxWebviewId__ = rootVueVM.__wxWebviewId__
+                this.__wxExparserNodeId__ = rootVueVM.__wxExparserNodeId__
                 callHook$1(this, "onLoad", mp.query)
                 // callHook$1(this, "onReady") // 避免 onReady触发两次
             }
@@ -5769,6 +5790,7 @@ try {
                 // 生命周期函数--监听页面加载
                 onLoad: function onLoad(query) {
                     rootVueVM.__wxWebviewId__ = this.__wxWebviewId__//fixed by xxxxxx(createIntersectionObserver)
+                    rootVueVM.__wxExparserNodeId__ = this.__wxExparserNodeId__
                     mp.page = this
                     mp.query = query
                     mp.status = "load"
@@ -5783,6 +5805,7 @@ try {
                 // 生命周期函数--监听页面显示
                 onShow: function onShow() {
                     rootVueVM.__wxWebviewId__ = this.__wxWebviewId__//fixed by xxxxxx(createIntersectionObserver)
+                    rootVueVM.__wxExparserNodeId__ = this.__wxExparserNodeId__
                     mp.page = this
                     mp.status = "show"
                 

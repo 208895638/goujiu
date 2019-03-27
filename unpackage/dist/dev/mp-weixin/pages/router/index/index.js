@@ -655,7 +655,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 var _uniLoadMore = _interopRequireDefault(__webpack_require__(/*! ../../../components/uni-load-more.vue */ "../../../../www/hApp/goujiu/components/uni-load-more.vue"));
-var _uniBadge = _interopRequireDefault(__webpack_require__(/*! ../../../components/uni-badge.vue */ "../../../../www/hApp/goujiu/components/uni-badge.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+var _uniBadge = _interopRequireDefault(__webpack_require__(/*! ../../../components/uni-badge.vue */ "../../../../www/hApp/goujiu/components/uni-badge.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   components: {
     uniLoadMore: _uniLoadMore.default,
@@ -674,32 +674,38 @@ var _uniBadge = _interopRequireDefault(__webpack_require__(/*! ../../../componen
       tabBars: [{
         name: '精选',
         id: 'jingxuan',
-        sid: 0 },
+        sid: 0,
+        init: 0 },
 
       {
         name: '白酒',
         id: 'baijiu',
-        sid: 1 },
+        sid: 1,
+        init: 0 },
 
       {
         name: '葡萄酒',
         id: 'putaojiu',
-        sid: 2 },
+        sid: 2,
+        init: 0 },
 
       {
         name: '清酒洋酒',
         id: 'qingyang',
-        sid: "4,1435" },
+        sid: "4,1435",
+        init: 0 },
 
       {
         name: '黄酒啤酒',
         id: 'huangpi',
-        sid: "5,6" },
+        sid: "5,6",
+        init: 0 },
 
       {
         name: '年份老酒',
         id: 'laojiu',
-        sid: 7 }],
+        sid: 7,
+        init: 0 }],
 
       hour: "0",
       minute: "0",
@@ -744,7 +750,10 @@ var _uniBadge = _interopRequireDefault(__webpack_require__(/*! ../../../componen
     if (this.loadingType !== 0) {
       return;
     }
-    // 			this.loadingType = 1;
+    this.tabBars[this.tabIndex].init = this.tabBars[this.tabIndex].init + 1;
+    this.loadingType = 1;
+    this.getMoreWins();
+
     // 			let list = [],
     // 				maxItem = this.tabBars[this.tabBars.length - 1],
     // 				length = maxItem + 6;
@@ -763,15 +772,14 @@ var _uniBadge = _interopRequireDefault(__webpack_require__(/*! ../../../componen
   methods: {
 
     tapTab: function () {var _tapTab = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(index) {var tabBar, tabBarScrollLeft;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
-                this.tabIndex === index)) {_context.next = 5;break;}
-                alert(index);return _context.abrupt("return",
-                false);case 5:_context.next = 7;return (
+                this.tabIndex === index)) {_context.next = 4;break;}return _context.abrupt("return",
+                false);case 4:_context.next = 6;return (
 
-                  this.getElSize("tab-bar"));case 7:tabBar = _context.sent;
+                  this.getElSize("tab-bar"));case 6:tabBar = _context.sent;
                 tabBarScrollLeft = tabBar.scrollLeft; //点击的时候记录并设置scrollLeft
                 this.scrollLeft = tabBarScrollLeft;
                 this.isClickChange = true;
-                this.tabIndex = index;case 12:case "end":return _context.stop();}}}, _callee, this);}));function tapTab(_x) {return _tapTab.apply(this, arguments);}return tapTab;}(),
+                this.tabIndex = index;case 11:case "end":return _context.stop();}}}, _callee, this);}));function tapTab(_x) {return _tapTab.apply(this, arguments);}return tapTab;}(),
 
 
     getElSize: function getElSize(id) {//得到元素的size
@@ -795,6 +803,40 @@ var _uniBadge = _interopRequireDefault(__webpack_require__(/*! ../../../componen
             msg.forEach(function (ele) {
               _this.id[ele.adv_BlockID].push(ele);
             });
+          } else {
+            uni.showToast({
+              icon: "none",
+              title: res.data.msg,
+              duration: 2000 });
+
+          }
+        } });
+
+    },
+    getMoreWins: function getMoreWins() {
+      var _this = this,obj = this.tabBars[this.tabIndex];
+
+      uni.request({
+        //url: this.userUrl + "/BtCApi/Home/GethomeProductByhot?seriesid="+obj.sid+'&pageindex='+obj.pages+'&pagesize=20', 
+        url: this.userUrl + "/BtCApi/Home/GethomeProductByhot?seriesid=".concat(obj.sid, "&pageindex=").concat(obj.init, "&pagesize=20"),
+        method: 'GET',
+        success: function success(res) {
+
+          var msg = res.data.data;
+          if (res.data.status == true) {var _this$id;
+
+            var aa = msg.map(function (ele) {
+              var objs = {};
+
+              objs.Pic = "http://img0.gjw.com/product/".concat(ele.Pic);
+              objs.Name = ele.ProductName;
+              objs.listAtivityName = ele.activityTitle;
+              objs.ExtField = ele.ActivityMoney;
+              objs.ID = ele.ProductId;
+              return objs;
+            });
+            (_this$id = _this.id[_this.tabIndex + 6]).push.apply(_this$id, _toConsumableArray(aa));
+            _this.loadingType = 0;
           } else {
             uni.showToast({
               icon: "none",
@@ -837,7 +879,6 @@ var _uniBadge = _interopRequireDefault(__webpack_require__(/*! ../../../componen
           var msg = res.data.data;
           var Seckill = res.data.data[0];
           _this.skillList = Seckill.AppSeckill.AppSeckillProList;
-          console.log(Seckill.AppSeckill.AppSeckillProList);
           var StarTime = new Date(Seckill.AppSeckill.StarTime.replace("-", "/").replace("-", "/"));
           var CurrTime = new Date(Seckill.AppSeckill.CurrTime.replace("-", "/").replace("-", "/"));
           var EndTime = new Date(Seckill.AppSeckill.EndTime.replace("-", "/").replace("-", "/"));
@@ -870,8 +911,9 @@ var _uniBadge = _interopRequireDefault(__webpack_require__(/*! ../../../componen
     } },
 
   mounted: function mounted() {
-    this.init();
-    this.skill();
+    this.init(); // 初始化数据
+    this.skill(); // 获取秒杀数据
+    //this.getMoreWins();
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
@@ -1785,8 +1827,8 @@ var render = function() {
           _vm.loadingType === 0
             ? _vm.contentText.contentdown
             : _vm.loadingType === 1
-              ? _vm.contentText.contentrefresh
-              : _vm.contentText.contentnomore
+            ? _vm.contentText.contentrefresh
+            : _vm.contentText.contentnomore
         )
       )
     ])
@@ -1856,7 +1898,7 @@ var render = function() {
               { key: index, attrs: { mpcomid: "89a48aae-1-" + index } },
               [
                 _c("view", { staticClass: "swiper-item " }, [
-                  _c("image", { attrs: { src: item.Pic, mode: "widthFix" } })
+                  _c("image", { attrs: { src: item.Pic } })
                 ])
               ]
             )
@@ -1871,11 +1913,7 @@ var render = function() {
       [
         _c("h2", [
           _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! ../../../static/mine/hot.png */ "../../../../www/hApp/goujiu/static/mine/hot.png"),
-              mode: "widthFix",
-              alt: ""
-            }
+            attrs: { src: __webpack_require__(/*! ../../../static/mine/hot.png */ "../../../../www/hApp/goujiu/static/mine/hot.png"), alt: "" }
           })
         ]),
         _c(
@@ -1907,7 +1945,7 @@ var render = function() {
           { staticClass: "wins" },
           _vm._l(_vm.id[3], function(item, index) {
             return _c("li", { key: index }, [
-              _c("img", { attrs: { src: item.Pic, alt: "", mode: "widthFix" } })
+              _c("img", { attrs: { src: item.Pic, alt: "" } })
             ])
           })
         )
@@ -2087,325 +2125,332 @@ var render = function() {
         ],
         1
       ),
-      _c(
-        "view",
-        { staticClass: "bot " },
-        [
-          _vm.tabIndex == 0
-            ? [
-                _c(
+      _c("view", { staticClass: "bot" }, [
+        _c(
+          "view",
+          { staticClass: "botPer", class: _vm.tabIndex == 0 ? "on" : "" },
+          [
+            _c(
+              "view",
+              { staticClass: "list-view" },
+              _vm._l(_vm.id[6], function(item, index) {
+                return _c(
                   "view",
-                  { staticClass: "list-view" },
-                  _vm._l(_vm.id[6], function(item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "list-item winList" },
-                      [
-                        _c("image", {
-                          attrs: { src: item.Pic, mode: "widthFix" }
-                        }),
-                        _c("text", { staticClass: "wT" }, [
-                          _vm._v(_vm._s(item.Name))
-                        ]),
-                        _vm._l(item.listAtivityName, function(ele, ins) {
-                          return _c(
-                            "text",
-                            { key: ins },
-                            [
-                              _c("uni-badge", {
-                                attrs: {
-                                  text: ele.Ativityname,
-                                  type:
-                                    ele.Ativityname == "限时抢购"
-                                      ? "warning"
-                                      : "primary",
-                                  mpcomid: "89a48aae-4-" + index + "-" + ins
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        }),
-                        _c("text", { staticClass: "wB" }, [
-                          _vm._v("￥" + _vm._s(item.ExtField))
-                        ])
-                      ],
-                      2
-                    )
-                  })
-                ),
-                _c("uni-load-more", {
-                  attrs: {
-                    loadingType: _vm.loadingType,
-                    contentText: _vm.contentText,
-                    mpcomid: "89a48aae-5"
-                  }
-                })
-              ]
-            : _vm._e(),
-          _vm.tabIndex == 1
-            ? [
-                _c(
+                  { key: index, staticClass: "list-item winList" },
+                  [
+                    _c("image", {
+                      attrs: {
+                        src: item.Pic,
+                        "lazy-load": "true",
+                        mode: "widthFix"
+                      }
+                    }),
+                    _c("text", { staticClass: "wT" }, [
+                      _vm._v(_vm._s(item.Name))
+                    ]),
+                    _vm._l(item.listAtivityName, function(ele, ins) {
+                      return _c(
+                        "view",
+                        { key: ins },
+                        [
+                          _c("uni-badge", {
+                            attrs: {
+                              text: ele.Ativityname,
+                              type:
+                                ele.Ativityname == "限时抢购"
+                                  ? "warning"
+                                  : "primary",
+                              mpcomid: "89a48aae-4-" + index + "-" + ins
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    }),
+                    _c("text", { staticClass: "wB" }, [
+                      _vm._v("￥" + _vm._s(item.ExtField))
+                    ])
+                  ],
+                  2
+                )
+              })
+            ),
+            _c("uni-load-more", {
+              attrs: {
+                loadingType: _vm.loadingType,
+                contentText: _vm.contentText,
+                mpcomid: "89a48aae-5"
+              }
+            })
+          ],
+          1
+        ),
+        _c(
+          "view",
+          { staticClass: "botPer", class: _vm.tabIndex == 1 ? "on" : "" },
+          [
+            _c(
+              "view",
+              { staticClass: "list-view" },
+              _vm._l(_vm.id[7], function(item, index) {
+                return _c(
                   "view",
-                  { staticClass: "list-view" },
-                  _vm._l(_vm.id[7], function(item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "list-item winList" },
-                      [
-                        _c("image", {
-                          attrs: { src: item.Pic, mode: "widthFix" }
-                        }),
-                        _c("text", { staticClass: "wT" }, [
-                          _vm._v(_vm._s(item.Name))
-                        ]),
-                        _vm._l(item.listAtivityName, function(ele, ins) {
-                          return _c(
-                            "text",
-                            { key: ins },
-                            [
-                              _c("uni-badge", {
-                                attrs: {
-                                  text: ele.Ativityname,
-                                  type:
-                                    ele.Ativityname == "限时抢购"
-                                      ? "warning"
-                                      : "primary",
-                                  mpcomid: "89a48aae-7-" + index + "-" + ins
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        }),
-                        _c("text", { staticClass: "wB" }, [
-                          _vm._v("￥" + _vm._s(item.ExtField))
-                        ])
-                      ],
-                      2
-                    )
-                  })
-                ),
-                _c("uni-load-more", {
-                  attrs: {
-                    loadingType: _vm.loadingType,
-                    contentText: _vm.contentText,
-                    mpcomid: "89a48aae-8"
-                  }
-                })
-              ]
-            : _vm._e(),
-          _vm.tabIndex == 2
-            ? [
-                _c(
+                  { key: index, staticClass: "list-item winList" },
+                  [
+                    _c("image", { attrs: { src: item.Pic, mode: "widthFix" } }),
+                    _c("text", { staticClass: "wT" }, [
+                      _vm._v(_vm._s(item.Name))
+                    ]),
+                    _vm._l(item.listAtivityName, function(ele, ins) {
+                      return _c(
+                        "view",
+                        { key: ins },
+                        [
+                          _c("uni-badge", {
+                            attrs: {
+                              text: ele.Ativityname,
+                              type:
+                                ele.Ativityname == "限时抢购"
+                                  ? "warning"
+                                  : "primary",
+                              mpcomid: "89a48aae-6-" + index + "-" + ins
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    }),
+                    _c("text", { staticClass: "wB" }, [
+                      _vm._v("￥" + _vm._s(item.ExtField))
+                    ])
+                  ],
+                  2
+                )
+              })
+            ),
+            _c("uni-load-more", {
+              attrs: {
+                loadingType: _vm.loadingType,
+                contentText: _vm.contentText,
+                mpcomid: "89a48aae-7"
+              }
+            })
+          ],
+          1
+        ),
+        _c(
+          "view",
+          { staticClass: "botPer", class: _vm.tabIndex == 2 ? "on" : "" },
+          [
+            _c(
+              "view",
+              { staticClass: "list-view" },
+              _vm._l(_vm.id[8], function(item, index) {
+                return _c(
                   "view",
-                  { staticClass: "list-view" },
-                  _vm._l(_vm.id[8], function(item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "list-item winList" },
-                      [
-                        _c("image", {
-                          attrs: { src: item.Pic, mode: "widthFix" }
-                        }),
-                        _c("text", { staticClass: "wT" }, [
-                          _vm._v(_vm._s(item.Name))
-                        ]),
-                        _vm._l(item.listAtivityName, function(ele, ins) {
-                          return _c(
-                            "text",
-                            { key: ins },
-                            [
-                              _c("uni-badge", {
-                                attrs: {
-                                  text: ele.Ativityname,
-                                  type:
-                                    ele.Ativityname == "限时抢购"
-                                      ? "warning"
-                                      : "primary",
-                                  mpcomid: "89a48aae-10-" + index + "-" + ins
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        }),
-                        _c("text", { staticClass: "wB" }, [
-                          _vm._v("￥" + _vm._s(item.ExtField))
-                        ])
-                      ],
-                      2
-                    )
-                  })
-                ),
-                _c("uni-load-more", {
-                  attrs: {
-                    loadingType: _vm.loadingType,
-                    contentText: _vm.contentText,
-                    mpcomid: "89a48aae-11"
-                  }
-                })
-              ]
-            : _vm._e(),
-          _vm.tabIndex == 3
-            ? [
-                _c(
+                  { key: index, staticClass: "list-item winList" },
+                  [
+                    _c("image", { attrs: { src: item.Pic, mode: "widthFix" } }),
+                    _c("text", { staticClass: "wT" }, [
+                      _vm._v(_vm._s(item.Name))
+                    ]),
+                    _vm._l(item.listAtivityName, function(ele, ins) {
+                      return _c(
+                        "view",
+                        { key: ins },
+                        [
+                          _c("uni-badge", {
+                            attrs: {
+                              text: ele.Ativityname,
+                              type:
+                                ele.Ativityname == "限时抢购"
+                                  ? "warning"
+                                  : "primary",
+                              mpcomid: "89a48aae-8-" + index + "-" + ins
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    }),
+                    _c("text", { staticClass: "wB" }, [
+                      _vm._v("￥" + _vm._s(item.ExtField))
+                    ])
+                  ],
+                  2
+                )
+              })
+            ),
+            _c("uni-load-more", {
+              attrs: {
+                loadingType: _vm.loadingType,
+                contentText: _vm.contentText,
+                mpcomid: "89a48aae-9"
+              }
+            })
+          ],
+          1
+        ),
+        _c(
+          "view",
+          { staticClass: "botPer", class: _vm.tabIndex == 3 ? "on" : "" },
+          [
+            _c(
+              "view",
+              { staticClass: "list-view" },
+              _vm._l(_vm.id[9], function(item, index) {
+                return _c(
                   "view",
-                  { staticClass: "list-view" },
-                  _vm._l(_vm.id[9], function(item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "list-item winList" },
-                      [
-                        _c("image", {
-                          attrs: { src: item.Pic, mode: "widthFix" }
-                        }),
-                        _c("text", { staticClass: "wT" }, [
-                          _vm._v(_vm._s(item.Name))
-                        ]),
-                        _vm._l(item.listAtivityName, function(ele, ins) {
-                          return _c(
-                            "text",
-                            { key: ins },
-                            [
-                              _c("uni-badge", {
-                                attrs: {
-                                  text: ele.Ativityname,
-                                  type:
-                                    ele.Ativityname == "限时抢购"
-                                      ? "warning"
-                                      : "primary",
-                                  mpcomid: "89a48aae-13-" + index + "-" + ins
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        }),
-                        _c("text", { staticClass: "wB" }, [
-                          _vm._v("￥" + _vm._s(item.ExtField))
-                        ])
-                      ],
-                      2
-                    )
-                  })
-                ),
-                _c("uni-load-more", {
-                  attrs: {
-                    loadingType: _vm.loadingType,
-                    contentText: _vm.contentText,
-                    mpcomid: "89a48aae-14"
-                  }
-                })
-              ]
-            : _vm._e(),
-          _vm.tabIndex == 4
-            ? [
-                _c(
+                  { key: index, staticClass: "list-item winList" },
+                  [
+                    _c("image", { attrs: { src: item.Pic, mode: "widthFix" } }),
+                    _c("text", { staticClass: "wT" }, [
+                      _vm._v(_vm._s(item.Name))
+                    ]),
+                    _vm._l(item.listAtivityName, function(ele, ins) {
+                      return _c(
+                        "view",
+                        { key: ins },
+                        [
+                          _c("uni-badge", {
+                            attrs: {
+                              text: ele.Ativityname,
+                              type:
+                                ele.Ativityname == "限时抢购"
+                                  ? "warning"
+                                  : "primary",
+                              mpcomid: "89a48aae-10-" + index + "-" + ins
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    }),
+                    _c("text", { staticClass: "wB" }, [
+                      _vm._v("￥" + _vm._s(item.ExtField))
+                    ])
+                  ],
+                  2
+                )
+              })
+            ),
+            _c("uni-load-more", {
+              attrs: {
+                loadingType: _vm.loadingType,
+                contentText: _vm.contentText,
+                mpcomid: "89a48aae-11"
+              }
+            })
+          ],
+          1
+        ),
+        _c(
+          "view",
+          { staticClass: "botPer", class: _vm.tabIndex == 4 ? "on" : "" },
+          [
+            _c(
+              "view",
+              { staticClass: "list-view" },
+              _vm._l(_vm.id[10], function(item, index) {
+                return _c(
                   "view",
-                  { staticClass: "list-view" },
-                  _vm._l(_vm.id[10], function(item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "list-item winList" },
-                      [
-                        _c("image", {
-                          attrs: { src: item.Pic, mode: "widthFix" }
-                        }),
-                        _c("text", { staticClass: "wT" }, [
-                          _vm._v(_vm._s(item.Name))
-                        ]),
-                        _vm._l(item.listAtivityName, function(ele, ins) {
-                          return _c(
-                            "text",
-                            { key: ins },
-                            [
-                              _c("uni-badge", {
-                                attrs: {
-                                  text: ele.Ativityname,
-                                  type:
-                                    ele.Ativityname == "限时抢购"
-                                      ? "warning"
-                                      : "primary",
-                                  mpcomid: "89a48aae-16-" + index + "-" + ins
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        }),
-                        _c("text", { staticClass: "wB" }, [
-                          _vm._v("￥" + _vm._s(item.ExtField))
-                        ])
-                      ],
-                      2
-                    )
-                  })
-                ),
-                _c("uni-load-more", {
-                  attrs: {
-                    loadingType: _vm.loadingType,
-                    contentText: _vm.contentText,
-                    mpcomid: "89a48aae-17"
-                  }
-                })
-              ]
-            : _vm._e(),
-          _vm.tabIndex == 5
-            ? [
-                _c(
+                  { key: index, staticClass: "list-item winList" },
+                  [
+                    _c("image", { attrs: { src: item.Pic, mode: "widthFix" } }),
+                    _c("text", { staticClass: "wT" }, [
+                      _vm._v(_vm._s(item.Name))
+                    ]),
+                    _vm._l(item.listAtivityName, function(ele, ins) {
+                      return _c(
+                        "view",
+                        { key: ins },
+                        [
+                          _c("uni-badge", {
+                            attrs: {
+                              text: ele.Ativityname,
+                              type:
+                                ele.Ativityname == "限时抢购"
+                                  ? "warning"
+                                  : "primary",
+                              mpcomid: "89a48aae-12-" + index + "-" + ins
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    }),
+                    _c("text", { staticClass: "wB" }, [
+                      _vm._v("￥" + _vm._s(item.ExtField))
+                    ])
+                  ],
+                  2
+                )
+              })
+            ),
+            _c("uni-load-more", {
+              attrs: {
+                loadingType: _vm.loadingType,
+                contentText: _vm.contentText,
+                mpcomid: "89a48aae-13"
+              }
+            })
+          ],
+          1
+        ),
+        _c(
+          "view",
+          { staticClass: "botPer", class: _vm.tabIndex == 5 ? "on" : "" },
+          [
+            _c(
+              "view",
+              { staticClass: "list-view" },
+              _vm._l(_vm.id[11], function(item, index) {
+                return _c(
                   "view",
-                  { staticClass: "list-view" },
-                  _vm._l(_vm.id[11], function(item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "list-item winList" },
-                      [
-                        _c("image", {
-                          attrs: { src: item.Pic, mode: "widthFix" }
-                        }),
-                        _c("text", { staticClass: "wT" }, [
-                          _vm._v(_vm._s(item.Name))
-                        ]),
-                        _vm._l(item.listAtivityName, function(ele, ins) {
-                          return _c(
-                            "text",
-                            { key: ins },
-                            [
-                              _c("uni-badge", {
-                                attrs: {
-                                  text: ele.Ativityname,
-                                  type:
-                                    ele.Ativityname == "限时抢购"
-                                      ? "warning"
-                                      : "primary",
-                                  mpcomid: "89a48aae-19-" + index + "-" + ins
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        }),
-                        _c("text", { staticClass: "wB" }, [
-                          _vm._v("￥" + _vm._s(item.ExtField))
-                        ])
-                      ],
-                      2
-                    )
-                  })
-                ),
-                _c("uni-load-more", {
-                  attrs: {
-                    loadingType: _vm.loadingType,
-                    contentText: _vm.contentText,
-                    mpcomid: "89a48aae-20"
-                  }
-                })
-              ]
-            : _vm._e()
-        ],
-        2
-      )
+                  { key: index, staticClass: "list-item winList" },
+                  [
+                    _c("image", { attrs: { src: item.Pic, mode: "widthFix" } }),
+                    _c("text", { staticClass: "wT" }, [
+                      _vm._v(_vm._s(item.Name))
+                    ]),
+                    _vm._l(item.listAtivityName, function(ele, ins) {
+                      return _c(
+                        "view",
+                        { key: ins },
+                        [
+                          _c("uni-badge", {
+                            attrs: {
+                              text: ele.Ativityname,
+                              type:
+                                ele.Ativityname == "限时抢购"
+                                  ? "warning"
+                                  : "primary",
+                              mpcomid: "89a48aae-14-" + index + "-" + ins
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    }),
+                    _c("text", { staticClass: "wB" }, [
+                      _vm._v("￥" + _vm._s(item.ExtField))
+                    ])
+                  ],
+                  2
+                )
+              })
+            ),
+            _c("uni-load-more", {
+              attrs: {
+                loadingType: _vm.loadingType,
+                contentText: _vm.contentText,
+                mpcomid: "89a48aae-15"
+              }
+            })
+          ],
+          1
+        )
+      ])
     ])
   ])
 }

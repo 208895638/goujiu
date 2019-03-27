@@ -59,8 +59,10 @@
       }
     ]
   },
+  "debug": true,
   "splashscreen": {
-    "autoclose": true
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
   },
   "appname": "gjw"
 }
